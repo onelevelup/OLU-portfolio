@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>OLU Media Maturity Mini-Audit</title>
+  <meta name="description" content="Free 5-minute digital media maturity assessment by One Level Up. Discover where your media operations stand and what's commercially at stake."/>
+  <!-- React + ReactDOM + Babel (standalone) -->
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #1F253D; }
+    input::placeholder { color: rgba(255,255,255,0.25); }
+    input:focus { outline: none; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+    ::-webkit-scrollbar-thumb { background: rgba(244,114,182,0.35); border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
 // ─── VERSION ─────────────────────────────────────────────────────────────────
 // v6 — 2026-03-09
 // - Measurement title: "Measurement" only (no "& Clarity"), exact doc wording
@@ -6,7 +35,6 @@
 // - Confirmation text centred horizontally
 // - isValidEmail() helper: requires "@" on both debrief + referral email fields
 // ─────────────────────────────────────────────────────────────────────────────
-import { useState, useEffect, useRef } from "react";
 
 // ─── BRAND TOKENS ────────────────────────────────────────────────────────────
 const BG      = "#1F253D";
@@ -446,7 +474,7 @@ function Footer() {
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
-export default function MediaMaturityAudit() {
+function MediaMaturityAudit() {
   // 0=land, 1-10=questions, 11=results
   const [step,        setStep]        = useState(0);
   const [answers,     setAnswers]     = useState({});  // "pillarId_qIdx" -> 1-4
@@ -1324,3 +1352,8 @@ export default function MediaMaturityAudit() {
 
   return null;
 }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<MediaMaturityAudit/>);
+</script>
+</body>
+</html>
